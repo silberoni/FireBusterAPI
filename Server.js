@@ -2,6 +2,7 @@ const express = require ('express');
 const cors = require ('cors');
 //const {MongoClient} = require('mongodb');
 const getAllAlerts = require('./controllers/getAllAlerts');
+const postNewAlert = require('./controllers/postNewAlert');
 
 const app = express();
 app.use(express.json());
@@ -55,7 +56,7 @@ var url = "mongodb://193.106.55.102:23777/";
 
 app.get('/getAllAlerts', (req, res) => { getAllAlerts.handleAlerts(req, res) })
 
-
+app.post('/postNewAlert', (req, res) => { postNewAlert.saveNewAlert(req.body, res) })
 app.listen(3000, () => {
     console.log("app is running on port 3000");
 })

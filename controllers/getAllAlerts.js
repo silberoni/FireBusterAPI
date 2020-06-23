@@ -23,18 +23,11 @@ const handleAlerts = (req, res) => {
           //console.log(today);
          // console.log(result[0].time);
 //          console.log(today > today2);
-          const filteredData = result.filter(obj => {
-            const today = new Date();
-            let test = obj.time;
-            let year = 2000 + Number(test.substring(6,8));
-            let month = Number(test.substring(3,5));
-            let day = Number(test.substring(0,2));
-            let hour = Number(test.substring(9,11));
-            let min = Number(test.substring(12,14));
-            let test2 = new Date(year, month, day, hour, min, 0, 0);
-           
-
-            return test2 > today;
+          const filteredData = result.filter(alert => {
+            let today = new Date();
+            today = new Date(today.getFullYear(),today.getMonth(),today.getDate()); 
+            let alertDate = new Date(alert.time.getFullYear(),alert.time.getMonth(),alert.time.getDate());
+            return alertDate >= today;
           })
           
           console.log(filteredData);
