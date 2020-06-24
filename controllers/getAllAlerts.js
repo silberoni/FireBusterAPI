@@ -30,8 +30,6 @@ const handleAlerts = (req, res) => {
             return alertDate >= today;
           })
           
-          console.log(filteredData);
-          
           db.close();
           res.json(filteredData);
         });
