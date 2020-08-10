@@ -26,7 +26,7 @@ const handleAlerts = (req, res) => {
           const filteredData = result.filter(alert => {
             let today = new Date();
             today = new Date(today.getFullYear(),today.getMonth(),today.getDate()); 
-            let alertDate = new Date(alert.time.getFullYear(),alert.time.getMonth(),alert.time.getDate());
+            let alertDate = new Date(alert.time);
             return alertDate >= today;
           })
           
